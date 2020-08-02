@@ -1,0 +1,127 @@
+body, html {    /* Removes whitespace from screen edges */
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 8fr auto;
+}
+
+/*
+===============
+Main navigation 
+===============
+*/
+.main-nav {
+  list-style-type: none;
+  padding: 0.5em;
+}
+.main-nav a {
+  color: rgba(0, 0, 0, 0.856);
+  text-decoration: none;
+  font-size: 12px;
+}
+.main-nav a:hover {
+  text-decoration: underline;
+}
+.main-nav li {
+  margin: 0 0.5em;
+}
+.info-nav {
+  display: flex;
+  justify-content: flex-start;
+}
+.service-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin: -1em 0;
+}
+.service-nav img {
+  border-radius: 50%;
+  margin: -10px 0;
+}
+
+/*
+==========
+Search Box
+==========
+*/
+main {
+  justify-self: center;
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+.logo {
+  display: block;
+  margin: 0 auto;
+  grid-row: 2;
+  grid-column: 2;
+  align-self: start;
+}
+.search-box {
+  grid-row: 3 / span 2;
+  grid-column: 2;
+  align-self: center;
+}
+.search-box input[type=search] {
+  width: 40em;
+  height: 3em;
+  border-radius: 20px;
+  border: 0.5px solid silver;
+}
+.search-box input[type=search]:hover {
+  border: 0.5px solid gray;
+  box-shadow: 1px 1px 1px rgba(192, 192, 192, 0.5);
+}
+.search-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 2em;
+}
+.search-buttons button {
+  border: none;
+  border-radius: 5%;
+  width: 10em;
+  height: 2em;
+  margin: 0 0.3em;
+  background-color: rgba(128, 128, 128, 0.082);
+  color: rgba(0, 0, 0, 0.685);
+}
+.search-buttons button:hover {
+  border: 0.5px solid gray;
+}
+
+/* 
+=================
+Footer navigation 
+=================
+*/
+footer {
+  height: 50px;
+  background-color: rgba(128, 128, 128, 0.082);
+}
+.footer-nav {
+  list-style-type: none;
+}
+.footer-nav a {
+  color: rgba(0, 0, 0, 0.685);
+  text-decoration: none;
+  font-size: 13px;
+}
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+.footer-nav li {
+  margin: 0 1em;
+}
+.info-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+.terms-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin: -1.2em 0;
+}
