@@ -1,8 +1,8 @@
-body, html {    /* Removes whitespace from screen edges */
+body, html {      /* Removes whitespace from screen edges */
   margin: 0;
   padding: 0;
 }
-body {
+body {            /* Grid rows for making footer stick to bottom */  
   height: 100vh;
   display: grid;
   grid-template-rows: 1fr 8fr auto;
