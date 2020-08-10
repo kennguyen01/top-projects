@@ -26,8 +26,8 @@ function compareHands(p1, p2) {
 
 /**
  * 
- * @param {*} playerSelection 
- * @param {*} computerSelection 
+ * @param {string} playerSelection 
+ * @param {string} computerSelection 
  */
 function playRound(playerSelection, computerSelection) {
   let p1 = playerSelection;
