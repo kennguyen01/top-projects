@@ -47,7 +47,7 @@ function playRound(playerSelection, computerSelection) {
 function game(rounds=5) {
   const hands = ["rock", "paper", "scissors"];
 
-  for (i = 0; i < rounds; i++) {
+  for (let i = 0; i < rounds; i++) {
     let computerSelection = computerPlay(hands);
 
     let playerSelection;
