@@ -4,8 +4,10 @@ General Styling
 ===============
 */
 body, html {
-  height: 100%;
+  height: 95%;
   display: grid;
+  background-image: url(background.png);
+  background-repeat: repeat;
 }
 
 /*
@@ -37,6 +39,9 @@ Main Container
   border-radius: 5px;
   font-size: 20px;
 }
+.main-container button:hover {
+  transform: scale(1.1);
+}
 
 /*
 =======
@@ -54,7 +59,7 @@ Display
   font-size: 3em;
   text-align: right;
   padding: 0 10px;
-  background: #eeeeee;
+  background: white;
 }
 
 /* 
@@ -82,4 +87,13 @@ Calculator Functions
 }
 #equal {
   grid-area: equal;
+}
+
+/*
+==================
+Calculator Numbers
+==================
+*/
+.number:hover {
+  background: white;
 }
