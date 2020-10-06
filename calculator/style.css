@@ -1,0 +1,85 @@
+/*
+===============
+General Styling
+===============
+*/
+body, html {
+  height: 100%;
+  display: grid;
+}
+
+/*
+==============
+Main Container
+==============
+*/
+.main-container {
+  display: grid;
+  width: 300px;
+  height: 400px;
+  grid-template-areas:
+    "dis    dis    dis    dis"
+    "dis    dis    dis    dis"
+    "clear  neg    pct    div"
+    "seven  eight  nine   mult"
+    "four   five   six    sub"
+    "one    two    three  add"
+    "zero   dec    equal  add";
+  grid-gap: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: auto;
+  padding: 15px;
+  background: #51adcf;
+}
+.main-container button {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+/*
+=======
+Display
+=======
+*/
+#display {
+  height: 80%;
+  grid-area: dis;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 3em;
+  text-align: right;
+  padding: 0 10px;
+  background: #eeeeee;
+}
+
+/* 
+====================
+Calculator Functions
+====================
+*/
+.function {
+  color: white;
+  background: #373a40;
+}
+#clear {
+  grid-area: clear;
+  color: white;
+  background: #cd0a0a;
+}
+#negative {
+  grid-area: neg;
+}
+#percent {
+  grid-area: pct;
+}
+#add {
+  grid-area: add;
+}
+#equal {
+  grid-area: equal;
+}
