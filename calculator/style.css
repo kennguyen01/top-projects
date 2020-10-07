@@ -44,11 +44,11 @@ Main Container
 }
 
 /*
-=======
-Display
-=======
+=================
+Calculator Screen
+=================
 */
-#display {
+#screen {
   height: 80%;
   grid-area: dis;
   display: flex;
@@ -67,7 +67,7 @@ Display
 Calculator Functions
 ====================
 */
-.function {
+.operation {
   color: white;
   background: #373a40;
 }
@@ -78,15 +78,27 @@ Calculator Functions
 }
 #negative {
   grid-area: neg;
+  color: white;
+  background: #373a40;
 }
 #percent {
   grid-area: pct;
+  color: white;
+  background: #373a40;
 }
 #add {
   grid-area: add;
 }
+#subtract {
+  grid-area: sub;
+}
 #equal {
   grid-area: equal;
+}
+#decimal {
+  grid-area: dec;
+  color: white;
+  background: #373a40;
 }
 
 /*
