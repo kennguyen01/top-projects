@@ -94,6 +94,8 @@ Calculator Functions
 }
 #equal {
   grid-area: equal;
+  color: white;
+  background: #373a40;
 }
 #decimal {
   grid-area: dec;

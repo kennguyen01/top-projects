@@ -76,11 +76,9 @@ const calculate = (x, y, func) => {
 
       if (!operator) {
         first += e.target.value;
-        console.log(`1st: ${first}`);
         display(screen, first);
       } else if (operator != '=') {
         second += e.target.value;
-        console.log(`2nd: ${second}`);
         display(screen, second);
       }
     });
@@ -91,9 +89,6 @@ const calculate = (x, y, func) => {
   eqBtn.addEventListener('click', () => {
     if (first && second && operator) {
       first = calculate(first, second, operator);
-
-      console.log(`Total: ${first}`);
-
       display(screen, first);
       second = '';
       operator = '=';
@@ -149,14 +144,10 @@ const calculate = (x, y, func) => {
       if (first && second) {
         operator = op;
         first = calculate(first, second, operator);
-
-        console.log(`Total: ${first}`);
-
         display(screen, first);
         second = '';
       } else if (first) {
         operator = op;
-        console.log(`Operator: ${operator}`);
       }
     });
   });
