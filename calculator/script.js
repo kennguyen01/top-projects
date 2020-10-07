@@ -12,7 +12,7 @@ const multiply = (x, y) => {
 
 const divide = (x, y) => {
   if (y == 0) return 'Undefined';
-  return (+x / +y).toFixed(4).toString();
+  return (+x / +y).toString();
 }
 
 const negative = x => {
@@ -24,20 +24,21 @@ const percent = x => {
 }
 
 const display = (sc, val) => {
-  if (val.length > 9 && val.includes('e')) {
-    let start = `${val[0]}`;
-    let end = val.slice(1, 6);
-    let notation = val.length.toString();
+  sc.style.fontSize = '3em';
 
-    if (notation < 20) {
-      val = `${start}.${end}e${notation.sup()}`;
-    } else {
-      val = 'Error';
-    }
-  } else if (val.length > 9) {
-    val = (+val).toFixed(4);
+  if (val.length <= 9) {
+    sc.style.fontSize = '3em';
+  } else if (val.length > 9 && val.length <= 12) {
+    sc.style.fontSize = '2em';
+  } else if (val.length > 12 && val.length <= 17) {
+    sc.style.fontSize = '1.5em';
+  } else if (val.length > 17 && val.length <= 21) {
+    sc.style.fontSize = '1.2em';
+  } else if (val.length > 21) {
+    val = 'Number too large';
+    sc.style.fontSize = '1.5em';
   }
-  sc.innerHTML = val.toString();
+  sc.textContent = val.toString();
 }
 
 const calculate = (x, y, func) => {
@@ -66,11 +67,18 @@ const calculate = (x, y, func) => {
   let numBtns = document.querySelectorAll('.number');
   numBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
+
+      // Reset variables when user click on numbers without defined operators
+      if (operator == '=') {
+        first = '';
+        operator = '';
+      }
+
       if (!operator) {
         first += e.target.value;
         console.log(`1st: ${first}`);
         display(screen, first);
-      } else {
+      } else if (operator != '=') {
         second += e.target.value;
         console.log(`2nd: ${second}`);
         display(screen, second);
@@ -78,13 +86,17 @@ const calculate = (x, y, func) => {
     });
   });
 
-  // Calculate with equal
+  // Equal only works when operands and operator exist
   let eqBtn = document.querySelector('#equal');
   eqBtn.addEventListener('click', () => {
     if (first && second && operator) {
       first = calculate(first, second, operator);
+
+      console.log(`Total: ${first}`);
+
       display(screen, first);
       second = '';
+      operator = '=';
     }
   });
 
@@ -128,7 +140,7 @@ const calculate = (x, y, func) => {
     }
   })
 
-  // Operation input
+  // Operations input
   let operations = document.querySelectorAll('.operation');
   operations.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -137,6 +149,9 @@ const calculate = (x, y, func) => {
       if (first && second) {
         operator = op;
         first = calculate(first, second, operator);
+
+        console.log(`Total: ${first}`);
+
         display(screen, first);
         second = '';
       } else if (first) {
