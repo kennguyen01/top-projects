@@ -1,0 +1,49 @@
+/*
+ *  GENERAL STYLING
+ */
+body {
+  background: #d9ecf2;
+}
+h1 {
+  text-align: center;
+  color: #373a40;
+  font-size: 3em;
+}
+hr {
+  width: 80%;
+}
+
+/*
+ *  MAIN CONTAINER
+ */
+.main-container {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  margin: 1em auto;
+}
+figure {
+  background: #f1f3f8;
+  transform: scale(1);
+  transition: 0.3s ease;
+  border-radius: 10px;
+  padding: 0.5em;
+}
+figure:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease;
+  border: 1px solid #686d76;
+  border-radius: 10px;
+}
+img {
+  width: 350px;
+  padding: 1em;
+  border-radius: 10px;
+  background: #d6e0f0;
+}
+figcaption {
+  text-align: center;
+  font-size: 20px;
+}
