@@ -1,0 +1,64 @@
+/* SEARCH CONTENT
+
+  1. =GLOBAL
+  2. =MODAL
+
+*/
+
+/* ===GLOBAL=== */
+
+
+/* ===MODAL=== */
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Modal content */
+.modal-content {
+  width: 500px;
+  height: 300px;
+  border-radius: 15px;
+  background: white;
+  margin: 5% auto;
+  padding: 1em;
+  text-align: center;
+}
+.modal-content button {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+/* Close modal span */
+.close-modal {
+  color: #ff4b5c;
+  float: right;
+  font-size: 30px;
+}
+.close-modal:hover,
+.close-modal:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+/* Book info fieldset */
+.book-info {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 2fr 7fr;
+  grid-gap: 15px;;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+.book-info legend {
+  font-size: 24px;
+  margin-bottom: 0.5em;
+}
