@@ -1,4 +1,4 @@
-/* SEARCH CONTENT
+/* SEARCH DIRECTORY
 
   1. =GLOBAL
   2. =MODAL
@@ -6,9 +6,20 @@
 */
 
 /* ===GLOBAL=== */
-
+body {
+  background: #ebebeb;
+}
 
 /* ===MODAL=== */
+
+/* Open modal button */
+.open-modal {
+  width: 125px;
+  height: 25px;
+  margin: 0 auto;
+}
+
+/* Modal container */
 .modal {
   display: none;
   position: fixed;
@@ -22,7 +33,7 @@
 /* Modal content */
 .modal-content {
   width: 500px;
-  height: 300px;
+  min-height: 300px;
   border-radius: 15px;
   background: white;
   margin: 5% auto;
@@ -32,6 +43,10 @@
 .modal-content button {
   margin-top: 15px;
   font-size: 18px;
+}
+.modal-warning {
+  color: red;
+  font-size: 16px;
 }
 
 /* Close modal span */
@@ -59,6 +74,6 @@
   margin-top: 2em;
 }
 .book-info legend {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 0.5em;
 }
