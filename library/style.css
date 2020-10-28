@@ -1,23 +1,44 @@
 /* SEARCH DIRECTORY
 
   1. =GLOBAL
-  2. =MODAL
+  2. =LIBRARY
+  3. =MODAL
+  4. =BOOK
 
 */
 
 /* ===GLOBAL=== */
 body {
-  background: #ebebeb;
+  background: #b2deec;
+}
+
+/* ===LIBRARY=== */
+
+/* Main container */
+.library {
+  width: 80%;
+  background: #eeeeee;
+  margin: 0 auto;
+  border: 1px solid #28abb9;
+  border-radius: 15px;
+}
+
+/* Header */
+.library h1 {
+  text-align: center;
+  font-size: 36px;
+}
+
+/* Buttons */
+.library-btn {
+  display: flex;
+  justify-content: center;
+}
+.open-modal {
+  margin-right: 15px;
 }
 
 /* ===MODAL=== */
-
-/* Open modal button */
-.open-modal {
-  width: 125px;
-  height: 25px;
-  margin: 0 auto;
-}
 
 /* Modal container */
 .modal {
