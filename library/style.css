@@ -3,30 +3,32 @@
   1. =GLOBAL
   2. =LIBRARY
   3. =MODAL
-  4. =BOOK
+  4. =DISPLAY
 
 */
 
 /* ===GLOBAL=== */
 body {
-  background: #b2deec;
+  background: url(background.jpeg);
 }
 
 /* ===LIBRARY=== */
 
 /* Main container */
 .library {
-  width: 80%;
-  background: #eeeeee;
+  width: 70%;
+  background: #2d6187;
   margin: 0 auto;
-  border: 1px solid #28abb9;
+  border: 1px solid white;
   border-radius: 15px;
 }
 
 /* Header */
 .library h1 {
   text-align: center;
-  font-size: 36px;
+  font-size: 44px;
+  color: white;
+  text-shadow: 2px 0 0 #000;
 }
 
 /* Buttons */
@@ -97,4 +99,37 @@ body {
 .book-info legend {
   font-size: 20px;
   margin-bottom: 0.5em;
+}
+
+/* ===DISPLAY=== */
+.book-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+/* Book card */
+.book {
+  min-width: 200px;
+  min-height: 200px;
+  background: #f1f6f9;
+  border: 2px solid #fca652;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 2em 1em;
+  text-align: center;
+}
+.delete-book {
+  width: 100px;
+  height: 30px;
+  color: #394867;
+  font-size: 20px;
+  text-shadow: 1px 0 0 #000;
+}
+.delete-book:hover,
+.delete-book:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
 }

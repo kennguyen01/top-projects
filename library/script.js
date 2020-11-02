@@ -15,7 +15,7 @@ function Book(title, author, genre, status) {
 }
 
 /**
- * Reset modal input fields to default.
+ * Reset modal input fields to default values.
  */
 const resetFields = () => {
   let reset = document.querySelector('.reset');
@@ -32,7 +32,8 @@ const resetFields = () => {
  * 
  * @param {HTMLElement} modal 
  */
-const close = (modal) => {
+const close = () => {
+  let modal = document.querySelector('.modal');
   modal.style.display = 'none';
 }
 
@@ -49,11 +50,11 @@ const openModal = (modal) => {
 }
 
 /**
- * Close modal when span X clicked
+ * Close modal when span X clicked.
  */
 const closeModal = () => {
-  let close = document.querySelector('.close-modal')
-  close.addEventListener('click', close);
+  let xSpan = document.querySelector('.close-modal')
+  xSpan.addEventListener('click', close);
 }
 
 /**
@@ -186,9 +187,47 @@ const storeBook = () => {
   });
 }
 
-(function() {
-  console.log(localStorage);
+/**
+ * Generate a card for each book.
+ * Card HTML format:
+ * <div class="book"></div>
+ * 
+ * @param {Array.<Book>} library 
+ */
+const bookCard = (library) => {
+  let display = document.querySelector('.book-display');
+  for (let i = 0; i < library.length; i++) {
+    let book = library[i];
 
+    console.log(library[i]);
+
+    let card = document.createElement('div');
+    card.classList.add('book');
+
+    let title = document.createElement('h3');
+    let author = document.createElement('p');
+    let genre = document.createElement('p');
+    let status = document.createElement('p');
+    title.innerHTML = `<em>${book.title}</em>`;
+    author.innerHTML = `Author: <strong>${book.author}</strong>`;
+    genre.innerHTML = `Genre: <strong>${book.genre}</strong>`;
+    status.innerHTML = `Status: <strong>${book.status}</strong>`;
+
+    let del = document.createElement('span');
+    del.classList.add('delete-book');
+    del.innerHTML = 'Delete';
+
+    card.appendChild(title);
+    card.appendChild(author);
+    card.appendChild(genre);
+    card.appendChild(status);
+    card.appendChild(del);
+
+    display.appendChild(card);
+  }
+}
+
+(function() {
   // Activate add book modal
   modalControl();
 
@@ -211,4 +250,6 @@ const storeBook = () => {
     book = new Book(...book);
     userLibrary.push(book);
   }
+  // Generate book cards
+  bookCard(userLibrary);
 })();
