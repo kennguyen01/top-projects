@@ -9,26 +9,36 @@
 
 /* ===GLOBAL=== */
 body {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 9fr;
   background: url(background.jpeg);
+}
+
+/* Header */
+h1, h2 {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 0 0 #000;
+
+}
+h1 {
+  font-size: 44px;
+}
+h2 {
+  font-size: 28px;
 }
 
 /* ===LIBRARY=== */
 
 /* Main container */
 .library {
+  grid-row: 2;
   width: 70%;
   background: #2d6187;
   margin: 0 auto;
   border: 1px solid white;
   border-radius: 15px;
-}
-
-/* Header */
-.library h1 {
-  text-align: center;
-  font-size: 44px;
-  color: white;
-  text-shadow: 2px 0 0 #000;
 }
 
 /* Buttons */
@@ -106,6 +116,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 1em;
 }
 
@@ -114,21 +125,21 @@ body {
   min-width: 200px;
   min-height: 200px;
   background: #f1f6f9;
-  border: 2px solid #fca652;
+  border: 3px solid #ffa62b;
   border-radius: 10px;
   padding: 0.5em;
   margin: 2em 1em;
   text-align: center;
 }
-.delete-book {
+.remove-book {
   width: 100px;
   height: 30px;
   color: #394867;
-  font-size: 20px;
+  font-size: 16px;
   text-shadow: 1px 0 0 #000;
 }
-.delete-book:hover,
-.delete-book:focus {
+.remove-book:hover,
+.remove-book:focus {
   color: red;
   text-decoration: none;
   cursor: pointer;

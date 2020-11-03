@@ -79,28 +79,38 @@ const clickOutside = (modal) => {
 }
 
 /**
- * Open and close add book modal with listeners.
+ * Modal functionalities: add, close, and reset fields.
  */
 const modalControl = () => {
   let modal = document.querySelector('.modal');
 
-  // Open modal
+  // Open
   openModal(modal);
 
-  // Close modal
+  // Close
   closeModal();
   cancelModal();
   clickOutside(modal);
+
+  // Reset
+  resetFields();
 }
 
 /**
- * Clear local storage and remove all books.
+ * Clear local storage and remove all books from display.
  */
 const clearLibrary = () => {
   let clear = document.querySelector('.clear-library');
+  let display = document.querySelectorAll('.book-display');
+
   clear.addEventListener('click', () => {
+    while (display.firstChild) {
+      display.removeChild(display.lastChild);
+    }
     localStorage.clear();
+    location.reload();
   });
+
 }
 
 /**
@@ -167,89 +177,120 @@ const verifyData = (data) => {
 }
 
 /**
- * Verify book data and add array to local storage.
+ * Verify book data, generate book card, 
+ * and add array to local storage.
  */
-const storeBook = () => {
+const addBook = () => {
   let modal = document.querySelector('.modal');
 
   let add = document.querySelector('.add');
   add.addEventListener('click', () => {
     let data = getModalInputs();
     let verified = verifyData(data);
-    
-    // Add book data to storage
+
     if (verified) {
+      // Generate book card
+      let book = new Book(...data);
+      bookCard(book);
+
+      // Add book data to storage
       let title = data[0];
       localStorage.setItem(title.toLowerCase(), JSON.stringify(data));
 
       modal.style.display = 'none';
+
+      // Add new book to listener
+      removeBook();
     }
   });
 }
 
 /**
  * Generate a card for each book.
- * Card HTML format:
- * <div class="book"></div>
  * 
- * @param {Array.<Book>} library 
+ * Card HTML format:
+ * 
+ * <div class="book">
+ *  <h3>Title</h3>
+ *  <p>Author</p>
+ *  <p>Genre</p>
+ *  <p>Status</p>
+ * </div>
+ * 
+ * @param {Book} book
  */
-const bookCard = (library) => {
+const bookCard = (book) => {
   let display = document.querySelector('.book-display');
-  for (let i = 0; i < library.length; i++) {
-    let book = library[i];
 
-    console.log(library[i]);
+  let card = document.createElement('div');
+  card.classList.add('book');
 
-    let card = document.createElement('div');
-    card.classList.add('book');
+  let title = document.createElement('h3');
+  let author = document.createElement('p');
+  let genre = document.createElement('p');
+  let status = document.createElement('p');
+  title.innerHTML = `<em>${book.title}</em>`;
+  author.innerHTML = `Author: <strong>${book.author}</strong>`;
+  genre.innerHTML = `Genre: <strong>${book.genre}</strong>`;
+  status.innerHTML = `Status: <strong>${book.status}</strong>`;
 
-    let title = document.createElement('h3');
-    let author = document.createElement('p');
-    let genre = document.createElement('p');
-    let status = document.createElement('p');
-    title.innerHTML = `<em>${book.title}</em>`;
-    author.innerHTML = `Author: <strong>${book.author}</strong>`;
-    genre.innerHTML = `Genre: <strong>${book.genre}</strong>`;
-    status.innerHTML = `Status: <strong>${book.status}</strong>`;
+  let del = document.createElement('span');
+  del.classList.add('remove-book');
+  del.innerHTML = 'Remove';
 
-    let del = document.createElement('span');
-    del.classList.add('delete-book');
-    del.innerHTML = 'Delete';
+  card.appendChild(title);
+  card.appendChild(author);
+  card.appendChild(genre);
+  card.appendChild(status);
+  card.appendChild(del);
+  card.setAttribute('data-title', book.title.toLowerCase());
 
-    card.appendChild(title);
-    card.appendChild(author);
-    card.appendChild(genre);
-    card.appendChild(status);
-    card.appendChild(del);
-
-    display.appendChild(card);
-  }
+  display.appendChild(card);
 }
 
-(function() {
-  // Activate add book modal
+/**
+ * Add listener to remove book from display and storage.
+ */
+const removeBook = () => {
+  let display = document.querySelector('.book-display');
+
+  let removes = document.querySelectorAll('.remove-book');
+  removes.forEach((span) => {
+    span.addEventListener('click', () => {
+      let parent = span.parentNode;
+      let title = parent.getAttribute('data-title');
+      
+      display.removeChild(parent);
+      localStorage.removeItem(title);
+    });
+  });
+}
+
+(function () {
+  // Activate add book modal functionalities
   modalControl();
 
-  // Button to clear all books
-  clearLibrary();
+  // Add new book
+  addBook();
+  
+  // Check local storage for existing books
+  if (localStorage.length > 0) {
+    // Retrieve book data from storage
+    for (let i = 0; i < localStorage.length; i++) {
+      // Parse string data from storage back to array
+      let key = localStorage.key(i);
+      let book = JSON.parse(localStorage.getItem(key));
 
-  // User adding new book
-  storeBook();
+      // New book instance
+      book = new Book(...book);
 
-  // Retrieve book data from storage
-  let userLibrary = [];
-  let key;
-  let book;
-  for (let i = 0; i < localStorage.length; i++) {
-    // Parse string data from storage back to array
-    key = localStorage.key(i);
-    book = JSON.parse(localStorage.getItem(key));
+      // Generate book card
+      bookCard(book);
 
-    // Create and add new book instance to library array
-    book = new Book(...book);
-    userLibrary.push(book);
+      // Add stored books to listeners
+      removeBook();
+    }
   }
-  // Generate book cards
-  bookCard(userLibrary);
+  // Clear all books and local storage
+  clearLibrary();
 })();
