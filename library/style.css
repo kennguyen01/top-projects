@@ -20,7 +20,6 @@ h1, h2 {
   text-align: center;
   color: white;
   text-shadow: 2px 0 0 #000;
-
 }
 h1 {
   font-size: 44px;
@@ -48,8 +47,30 @@ h2 {
   display: flex;
   justify-content: center;
 }
+.library-btn button {
+  width: 150px;
+  height: 35px;
+  margin: 0 20px;
+  font-size: 16px;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-weight: 700;
+  color: white;
+}
+.library-btn button:hover {
+  transform: scale(1.1);
+}
 .open-modal {
-  margin-right: 15px;
+  background: #66bfbf;
+}
+.open-modal:hover {
+  background: #056674;
+}
+.clear-library {
+  background: #7e7474;
+}
+.clear-library:hover {
+  background: #39311d;
 }
 
 /* ===MODAL=== */
@@ -70,18 +91,46 @@ h2 {
   width: 500px;
   min-height: 300px;
   border-radius: 15px;
-  background: white;
+  background: #eeeeee;
   margin: 5% auto;
   padding: 1em;
   text-align: center;
 }
-.modal-content button {
-  margin-top: 15px;
-  font-size: 18px;
-}
 .modal-warning {
   color: red;
   font-size: 16px;
+}
+
+/* Modal buttons */
+.modal-content button {
+  width: 100px;
+  height: 30px;
+  margin-top: 15px;
+  margin-left: 10px;
+  font-size: 18px;
+  border-radius: 15px;
+  color: white;
+}
+.modal-content button:hover {
+  transform: scale(1.1);
+}
+.add {
+  background: #008891;
+}
+.add:hover {
+  background: #00587a;
+}
+.reset {
+  background: #d789d7;
+}
+.reset:hover {
+  background: #9d65c9
+}
+.cancel {
+  background: #ffa62b;
+}
+.cancel:hover {
+  background: #db6400;
 }
 
 /* Close modal span */
@@ -95,7 +144,7 @@ h2 {
   color: red;
   text-decoration: none;
   cursor: pointer;
-  font-weight: 900;
+  transform: scale(1.3);
 }
 
 /* Book info fieldset */
@@ -107,10 +156,17 @@ h2 {
   justify-content: center;
   align-items: center;
   margin-top: 2em;
+  font-size: 18px;
 }
 .book-info legend {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 0.5em;
+}
+.book-info input {
+  font-size: 16px;
+}
+.book-info select {
+  font-size: 16px;
 }
 
 /* ===DISPLAY=== */
@@ -127,7 +183,7 @@ h2 {
   min-width: 200px;
   min-height: 200px;
   background: #f1f6f9;
-  border: 3px solid #ffa62b;
+  border: 10px ridge #ffa62b;
   border-radius: 10px;
   padding: 0.5em;
   margin: 2em 1em;
