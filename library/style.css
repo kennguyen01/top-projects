@@ -26,6 +26,7 @@ h1 {
   font-size: 44px;
 }
 h2 {
+  margin-top: 5%;
   font-size: 28px;
 }
 
@@ -35,6 +36,7 @@ h2 {
 .library {
   grid-row: 2;
   width: 70%;
+  min-height: 80vh;
   background: #2d6187;
   margin: 0 auto;
   border: 1px solid white;

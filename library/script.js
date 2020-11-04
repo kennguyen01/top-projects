@@ -189,8 +189,9 @@ const addBook = () => {
     let verified = verifyData(data);
 
     if (verified) {
-      // Generate book card
       let book = new Book(...data);
+
+      // Generate book card
       bookCard(book);
 
       // Add book data to storage
@@ -246,6 +247,8 @@ const bookCard = (book) => {
   card.setAttribute('data-title', book.title.toLowerCase());
 
   display.appendChild(card);
+
+  emptyLibrary();
 }
 
 /**
@@ -259,11 +262,28 @@ const removeBook = () => {
     span.addEventListener('click', () => {
       let parent = span.parentNode;
       let title = parent.getAttribute('data-title');
-      
+
       display.removeChild(parent);
       localStorage.removeItem(title);
+
+      emptyLibrary();
     });
   });
+}
+
+/**
+ * Display phrase if library is empty.
+ * Get called inside bookCard() and removeBook().
+ */
+const emptyLibrary = () => {
+  let header = document.querySelector('.empty');
+  let book = document.querySelector('.book');
+  
+  if (book) {
+    header.style.display = 'none';
+  } else {
+    header.style.display = 'block';
+  }
 }
 
 (function () {
@@ -272,11 +292,13 @@ const removeBook = () => {
 
   // Add new book
   addBook();
-  
+
   // Check local storage for existing books
   if (localStorage.length > 0) {
+
     // Retrieve book data from storage
     for (let i = 0; i < localStorage.length; i++) {
+
       // Parse string data from storage back to array
       let key = localStorage.key(i);
       let book = JSON.parse(localStorage.getItem(key));
@@ -291,6 +313,7 @@ const removeBook = () => {
       removeBook();
     }
   }
+
   // Clear all books and local storage
   clearLibrary();
 })();
