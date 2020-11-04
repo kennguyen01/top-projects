@@ -32,7 +32,7 @@ figure {
   padding: 0.5em;
 }
 figure:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   transition: 0.3s ease;
   border: 1px solid #686d76;
   border-radius: 10px;
